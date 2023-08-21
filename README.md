@@ -52,5 +52,3 @@ Developers, architects, and DevOps enthusiasts, your contributions are invaluabl
 - [Azure.Management Libraries](https://learn.microsoft.com/en-us/dotnet/azure/sdk/resource-management?tabs=dotnetcli)
 - [Azure ARM Templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview)
 - [Azure DevOps YAML Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema-reference/)
-
-Embark on a journey where diagrams drive infrastructure and DevOps automation. Dive into our POC application and experience the future of efficient resource deployment and development workflows. Happy designing, deploying, and automating! 🚀
