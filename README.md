@@ -1,10 +1,6 @@
-Certainly, I've captured the essence of the application's capabilities and features. Here's the revised readme with a focus on the technical aspects and functionalities:
-
----
-
-🚀 **Infrastructure as Code and DevOps Automation: POC Application**
+🚀 **Infrastructure as Diagram: POC Application**
 --------------------------------------------------------------------
-Welcome to the Infrastructure as Code and DevOps Automation Proof of Concept (POC) application! This repository introduces a unique approach to cloud infrastructure management and DevOps automation through visual diagrams.
+Welcome to the Infrastructure as Diagram Proof of Concept (POC) application! This repository introduces a unique approach to cloud infrastructure creation and DevOps automation through visual diagrams.
 
 🌐 **Diagram-Driven Resource Deployment and Azure DevOps Automation**
 --------------------------------------------------------------------
