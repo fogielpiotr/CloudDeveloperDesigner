@@ -49,7 +49,7 @@ Developers, architects, and DevOps enthusiasts, your contributions are invaluabl
 - [Fabric.js Documentation](https://fabricjs.com/docs/)
 - [Angular Official Website](https://angular.io/)
 - [.NET Core Documentation](https://docs.microsoft.com/en-us/dotnet/core/)
-- [Azure.Management Libraries](https://docs.microsoft.com/en-us/azure/developer/python/azure-sdk-overview)
+- [Azure.Management Libraries](https://learn.microsoft.com/en-us/dotnet/azure/sdk/resource-management?tabs=dotnetcli)
 - [Azure ARM Templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview)
 - [Azure DevOps YAML Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema-reference/)
 
