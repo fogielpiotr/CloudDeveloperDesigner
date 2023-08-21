@@ -8,7 +8,7 @@ Welcome to the Infrastructure as Code and DevOps Automation Proof of Concept (PO
 
 🌐 **Diagram-Driven Resource Deployment and Azure DevOps Automation**
 --------------------------------------------------------------------
-This application is designed to revolutionize how you design, deploy, and manage cloud resources, all through a visual diagramming interface. With an Angular frontend and a .NET Core backend, here's what our POC application brings to the table:
+This application is designed to deploy cloud resources, all through a visual diagramming interface. With an Angular frontend and a .NET Core backend, here's what our POC application brings to the table:
 
 💡 **Key Features**
 ---------------------
