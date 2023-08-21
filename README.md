@@ -4,7 +4,7 @@ Welcome to the Infrastructure as Diagram Proof of Concept (POC) application! Thi
 
 🌐 **Diagram-Driven Resource Deployment and Azure DevOps Automation**
 --------------------------------------------------------------------
-[image](https://github.com/fogielpiotr/CloudDeveloperDesigner/assets/17532897/ded731be-2948-480e-8f6d-87457b41af3d)
+![Diagram Preview](https://github.com/fogielpiotr/CloudDeveloperDesigner/assets/17532897/ded731be-2948-480e-8f6d-87457b41af3d)
 
 This application is designed to deploy cloud resources, all through a visual diagramming interface. With an Angular frontend and a .NET Core backend, here's what our POC application brings to the table:
 
