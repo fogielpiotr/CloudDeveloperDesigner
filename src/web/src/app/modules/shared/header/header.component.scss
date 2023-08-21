@@ -1,0 +1,32 @@
+.toolbar-flex {
+    display:flex;
+    flex: 1;
+    align-items: center;
+    flex-direction: row;
+    width:100%;
+  }
+  
+  .toolbar-flex-cell {
+    display: flex;
+    align-items: center;
+  }
+  
+  .align-right {
+    justify-content: end;
+  }
+
+  .logOut {
+    cursor: pointer;
+  }
+
+:host::ng-deep .p-breadcrumb {
+  background-color: #004a9f;
+  color: #fff;
+  border: 0;
+}
+
+:host::ng-deep .p-breadcrumb ul li .p-menuitem-link .p-menuitem-icon,
+:host::ng-deep .p-breadcrumb ul li.p-breadcrumb-chevron,
+:host::ng-deep .p-breadcrumb ul li:last-child .p-menuitem-text {
+  color:  #fff;
+}

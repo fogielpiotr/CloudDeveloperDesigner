@@ -1,0 +1,26 @@
+<p-table [value]="Deployments">
+    <ng-template pTemplate="header" let-deployment>
+        <tr>
+            <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+            <th pSortableColumn="createdAt">Created at <p-sortIcon field="createdAt"></p-sortIcon></th>
+            <th pSortableColumn="creator">Creator <p-sortIcon field="creator"></p-sortIcon></th>
+            <th style="width: 4rem"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-deployment>
+        <tr>
+            <td><span [class]="'deployment-status ' + DeploymentStatus[deployment.status].toLowerCase()">{{DeploymentStatus[deployment.status]}}</span></td>
+            <td>{{deployment.createdAt | date:'short'}}</td>
+            <td>{{deployment.creator}}</td>
+            <td><p-button type="button" icon="pi pi-search" (click)="openDetails(deployment)"></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<ng-container *ngIf="ShowInfo">
+    <p-dialog (visibleChange)="onVisibleChanged($event)" [closeOnEscape]="true" [modal]="true" header="Deployment Details" [(visible)]="ShowInfo"
+      [style]="{width: '90vw', height: '80vw'}" [baseZIndex]="10000" [draggable]="false">
+      <app-deploymentdetails [Deployment]="SelectedDeployment"></app-deploymentdetails>
+    </p-dialog>
+</ng-container>

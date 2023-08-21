@@ -1,0 +1,36 @@
+<div class="pt-3 pl-2 pr-2">
+    <p>Resource Name:</p>
+    <div class="p-inputgroup">
+        <input class="p-inputtext text-center" pInputText type="text" value="{{objectData.displayName}}" disabled>
+    </div>
+</div>
+<form [formGroup]="resourceForm">
+    <div class="pt-3 pl-2 pr-2">
+        <p>Name:</p>
+        <div class="p-inputgroup">
+            <span
+                class="p-inputgroup-addon">{{objectData.resourceNaming.abbreviation}}{{objectData.resourceNaming.divider}}</span>
+            <input class="p-inputtext text-center" pInputText type="text" formControlName="name">
+            <span class="p-inputgroup-addon">{{objectData.resourceNaming.divider}}env</span>
+        </div>
+        <app-form-control-error [control]="resourceForm.controls['name']"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2" *ngFor="let param of params">
+        <p>{{param}}</p>
+        <p-dropdown *ngIf="objectData.template.parameters[param].allowedValues"
+            [options]="objectData.template.parameters[param].allowedValues" formControlName="{{param}}"
+            [autoDisplayFirst]="false">
+        </p-dropdown>
+        <div class="p-inputgroup" *ngIf="!objectData.template.parameters[param].allowedValues">
+            <input class="p-inputtext text-center" pInputText type="text" formControlName="{{param}}">
+        </div>
+        <app-form-control-error [control]="resourceForm.controls[param]"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2" *ngIf="!objectData.isSecretProvider">
+        <p>Secret Name:</p>
+        <div class="p-inputgroup">
+            <input class="p-inputtext text-center" pInputText type="text" formControlName="secretName">
+        </div>
+        <app-form-control-error [control]="resourceForm.controls['secretName']"></app-form-control-error>
+    </div>
+</form>

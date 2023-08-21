@@ -1,0 +1,51 @@
+mat-toolbar {
+  background-color: #004a9f;
+  color: #fff !important;
+  padding-right:1em;
+}
+
+mat-sidenav {
+  width: 250px;
+  border-right: none;
+  background: #cccfd3;
+  padding:0;
+  text-align: center;
+}
+
+.content {
+  height: calc(100vh - 98px);
+  margin: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-sidenav-container {
+  height:calc(100vh - 65px);
+  //background-color: #fff;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar-flex {
+  display:flex;
+  flex: 1;
+  align-items: center;
+  flex-direction: row;
+  width:100%;
+}
+
+.toolbar-flex-cell {
+  display: flex;
+  align-items: center;
+}
+
+.align-right {
+  justify-content: end;
+}
+
+:host ::ng-deep .p-toast-top-center {
+  width: 90%;
+}

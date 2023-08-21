@@ -1,0 +1,11 @@
+<p-accordion [multiple]="true">
+    <p-accordionTab header="Applications">
+        <img draggable="true" class="images-item" *ngFor="let app of applications" src={{app.iconFile}}
+            (dragstart)="appStartDrag($event, app)" pTooltip={{app.displayName}}>
+    </p-accordionTab>
+    <p-accordionTab header="Resources">
+        <img draggable="true" class="images-item" *ngFor="let resource of resources" src={{resource.iconFile}}
+            (dragstart)="resourceStartDrag($event, resource)"
+            pTooltip={{resource.displayName}}>
+    </p-accordionTab>
+</p-accordion>

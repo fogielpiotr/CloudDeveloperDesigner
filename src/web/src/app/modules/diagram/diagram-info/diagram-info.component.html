@@ -1,0 +1,42 @@
+<ng-container *ngIf="!diagramActiveId" [formGroup]="diagramForm">
+    <div class="pt-3 pl-2 pr-2">
+        <p>Resource Group name:</p>
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">rg-</span>
+            <input class="p-inputtext text-center" pInputText formControlName="resourceGroup" type="text"
+                maxlength="24">
+            <span class="p-inputgroup-addon">{{"-{env}"}}</span>
+        </div>
+        <app-form-control-error [control]="diagramForm.controls['resourceGroup']"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2">
+        <p>Environments:</p>
+        <p-multiSelect [options]="configuration?.availableEnvironments" formControlName="environments" [filter]="false">
+        </p-multiSelect>
+        <app-form-control-error [control]="diagramForm.controls['environments']"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2">
+        <p>Location:</p>
+        <p-dropdown [options]="configuration?.availableLocations" formControlName="location" optionLabel="displayName"
+            optionValue="name" [showClear]="true" [autoDisplayFirst]="false">
+        </p-dropdown>
+        <app-form-control-error [control]="diagramForm.controls['location']"></app-form-control-error>
+    </div>
+    <div *ngFor="let tag of configuration?.mandatoryTags" class="pt-3 pl-2 pr-2" formGroupName="mandatoryTags">
+        <p>{{tag}} tag:</p>
+        <div class="p-inputgroup">
+            <input class="p-inputtext text-center" pInputText type="text" maxlength="30" formControlName={{tag}}>
+        </div>
+        <app-form-control-error [control]="mandatoryTagsFormGroup.controls[tag]"></app-form-control-error>
+    </div>
+</ng-container>
+<ng-container *ngIf="diagramActiveId">
+    <container-element [ngSwitch]="currentDiagramObjectType">
+        <ng-container *ngSwitchCase="diagramObjectType.Application">
+            <app-app-node-info [diagramObject]="currentDiagramObject"></app-app-node-info>
+        </ng-container>
+        <ng-container *ngSwitchCase="diagramObjectType.Resource">
+            <app-resource-node-info [diagramObject]="currentDiagramObject"></app-resource-node-info>
+        </ng-container>
+    </container-element>
+</ng-container>

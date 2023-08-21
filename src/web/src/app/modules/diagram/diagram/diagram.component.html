@@ -1,0 +1,35 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" opened position="start">
+        <app-diagram-panel></app-diagram-panel>
+    </mat-sidenav>
+
+    <mat-sidenav #sidenav2 mode="side" class="diagram-info" opened position="end">
+        <app-diagram-info></app-diagram-info>
+    </mat-sidenav>
+    <div class="content">
+        <div class="mat-elevation-z2" style="width:100% ;height:5%" *ngIf="project">
+            <button pButton type="button" icon="pi pi-save" (click)="save()"
+                class="p-button-rounded p-button-success p-button-text"></button>
+            <button pButton type="button" icon="pi pi-play" (click)="showDeployment = true"
+                class="p-button-rounded p-button-success p-button-text"></button>
+            <button pButton type="button" icon="pi pi-image" (click)="downloadImage()"
+                class="p-button-rounded p-button-primary p-button-text"></button>
+            <button pButton type="button" icon="pi pi-plus-circle" (click)="zoomUp()"
+                class="p-button-rounded p-button-primary p-button-text"></button>
+            <button pButton type="button" icon="pi pi-minus-circle" (click)="zoomDown()"
+                class="p-button-rounded p-button-primary p-button-text"></button>
+            <button pButton pRipple type="button" icon="pi pi-times" (click)="deleteItem()"
+                [disabled]="!currentDiagramObjectId" class="p-button-rounded p-button-danger p-button-text"></button>
+        </div>
+        <div #wrapper class="mat-elevation-z2 pt-2" style="width:100%; height:95%">
+            <app-diagram-content></app-diagram-content>
+        </div>
+    </div>
+</mat-sidenav-container>
+
+<ng-container *ngIf="showDeployment">
+    <p-dialog [closeOnEscape]="true" [modal]="true" header="Deployment" [(visible)]="showDeployment"
+      [style]="{width: '90vw', height: '80vw'}" [baseZIndex]="10000" [draggable]="false">
+      <app-deployment [project]="project" [projectValid]="projectFormValid"></app-deployment>
+    </p-dialog>
+</ng-container>

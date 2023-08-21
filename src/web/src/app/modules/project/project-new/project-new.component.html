@@ -1,0 +1,20 @@
+<form [formGroup]="projectForm">
+    <div class="field">
+        <label for="name" class="block">Name</label>
+        <input id="name" type="text" aria-describedby="name-help"
+            [ngClass]="{'ng-invalid ng-dirty': projectForm.controls['name'].touched && projectForm.controls['name'].invalid}"
+            pInputText formControlName=name />
+            <app-form-control-error [control]="projectForm.controls['name']"></app-form-control-error>
+    </div>
+    <div class="field">
+        <label for="description" class="block">Description</label>
+        <textarea rows="5" cols="23" id="description" aria-describedby="description-help"
+            [ngClass]="{'ng-invalid ng-dirty': projectForm.controls['description'].touched && projectForm.controls['description'].invalid}"
+            pInputText formControlName=description></textarea>
+            <app-form-control-error [control]="projectForm.controls['description']"></app-form-control-error>
+    </div>
+    <div class="p-2 text-center">
+        <p-button [type]="'submit'" styleClass="p-button-sm" icon="pi pi-check" label="Add" [disabled]="!projectForm.valid" (click)="addProject()">
+        </p-button>
+    </div>
+</form>

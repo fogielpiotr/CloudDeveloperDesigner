@@ -1,0 +1,17 @@
+<div class="row toolbar-flex">
+    <div class="col-sm toolbar-flex-cell">
+        <h1>Cloud Developer Designer</h1>
+        <div class="pl-5" *ngIf="showBreadcrumb">
+            <p-breadcrumb [home]="home" [model]="items"></p-breadcrumb>
+        </div>
+    </div>
+    <div class="col-sm toolbar-flex-cell align-right">
+        <i class="pi pi-user"></i>
+        <div class="pl-4">{{userName}}</div>
+        <div class="pl-4 logOut" (click)="logOut()" >
+            <i class="pi pi-power-off"></i>
+        </div>
+    </div>
+</div>
+
+<p-confirmDialog header="Confirmation" key="logout" icon="pi pi-exclamation-triangle"></p-confirmDialog>

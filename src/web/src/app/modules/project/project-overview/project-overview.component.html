@@ -1,0 +1,44 @@
+<div style="height:100%">
+<button pButton pRipple type="button" icon="pi pi-plus"
+  class="p-button-rounded p-button-primary p-button-outlined new-project-button"
+  (click)="showAddNewProject = true"></button>
+  <p-scrollPanel [style]="{width: '100%', height:'90%'}">
+    <div class="project-cards">
+      <ng-container *ngFor="let project of projects">
+        <p-card class="project-card">
+          <ng-template pTemplate="header">
+            <h1 class="m-1 text-center">{{project.name}}</h1>
+          </ng-template>
+          <p class="description"><b>Description:</b> {{project.description}}</p>
+          <p><b>Created by: </b> {{project.createdBy}}</p>
+          <p><b>Created at: </b> {{project.created | date:'short'}}</p>
+          <p><b>Updated by: </b> {{project.updatedBy }}</p>
+          <p><b>Updated at: </b> {{project.updated | date:'short'}}</p>
+          <ng-template pTemplate="footer">
+            <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"
+              (click)="deleteProject(project.id)"></button>
+            <button pButton pRipple type="button" icon="pi pi-pencil"
+              class="p-button-rounded p-button-primary p-button-text" (click)="onProjectEdit(project)"></button>
+            <button pButton pRipple type="button" icon="pi pi-arrow-circle-right" (click)="openProject(project)"
+              class="p-button-rounded p-button-success p-button-text"></button>
+          </ng-template>
+        </p-card>
+      </ng-container>
+    </div>
+</p-scrollPanel>
+</div>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<ng-container *ngIf="showAddNewProject">
+  <p-dialog [closeOnEscape]="true" [modal]="true" header="Create project" [(visible)]="showAddNewProject"
+    [style]="{width: '20vw'}" [baseZIndex]="10000">
+    <app-project-new (onProjectCreated)="onProjectCreated($event)"></app-project-new>
+  </p-dialog>
+</ng-container>
+
+<ng-container *ngIf="showEditProject">
+  <p-dialog [closeOnEscape]="true" [modal]="true" header="Update project" [(visible)]="showEditProject"
+    [style]="{width: '20vw'}" [baseZIndex]="10000">
+    <app-project-edit [project]="projectToEdit" (onProjectUpdated)="onProjectEdited($event)"></app-project-edit>
+  </p-dialog>
+</ng-container>

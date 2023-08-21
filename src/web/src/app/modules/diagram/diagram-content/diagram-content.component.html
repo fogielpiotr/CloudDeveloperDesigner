@@ -1,0 +1,6 @@
+<ng-container *ngIf="diagramSize">
+    <div class="diagram-wrapper" (drop)="handleDrop($event)" [style.maxWidth]="diagramSize?.width + 'px'"
+        [style.maxHeight]="diagramSize?.height + 'px'">
+        <canvas id="diagram"></canvas>
+    </div>
+</ng-container>

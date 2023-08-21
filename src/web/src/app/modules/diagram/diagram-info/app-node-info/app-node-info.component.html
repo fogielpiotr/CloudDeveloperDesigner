@@ -1,0 +1,73 @@
+<div class="pt-3 pl-2 pr-2">
+    <p>Resource Name:</p>
+    <div class="p-inputgroup">
+        <input class="p-inputtext text-center" pInputText type="text" value="{{objectData.displayName}}" disabled>
+    </div>
+</div>
+<form [formGroup]="appForm">
+    <div class="pt-3 pl-2 pr-2">
+        <p>Name:</p>
+        <div class="p-inputgroup">
+            <input class="p-inputtext text-center" pInputText type="text" formControlName="name">
+            <span class="p-inputgroup-addon">{{'{env}'}}</span>
+        </div>
+        <app-form-control-error [control]="appForm.controls['name']"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2">
+        <p>Repository name:</p>
+        <div class="p-inputgroup">
+            <input class="p-inputtext text-center" pInputText type="text" formControlName="repositoryName">
+        </div>
+        <app-form-control-error [control]="appForm.controls['repositoryName']"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2" *ngIf="applicationType == applicationTypes.Server">
+        <p>Client secret name:</p>
+        <div class="p-inputgroup">
+            <input class="p-inputtext text-center" pInputText type="text" formControlName="clientSecretName">
+        </div>
+        <app-form-control-error [control]="appForm.controls['clientSecretName']"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2">
+        <p>Client Id secret name:</p>
+        <div class="p-inputgroup">
+            <input class="p-inputtext text-center" pInputText type="text" formControlName="clientIdSecretName">
+        </div>
+        <app-form-control-error [control]="appForm.controls['clientIdSecretName']"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2" *ngIf="applicationType == applicationTypes.Server">
+        <p>Authorized Apps:</p>
+        <p-multiSelect [options]="posibbleApps" formControlName="authorizedApps" optionLabel="name" optionValue="id">
+        </p-multiSelect>
+        <app-form-control-error [control]="appForm.controls['authorizedApps']"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2" *ngIf="applicationType == applicationTypes.Server">
+        <p>Connected Resources:</p>
+        <p-multiSelect [options]="possibleResources" formControlName="connectedResources" optionLabel="name"
+            optionValue="id">
+        </p-multiSelect>
+        <app-form-control-error [control]="appForm.controls['authorizedApps']"></app-form-control-error>
+    </div>
+    <div class="pt-3 pl-2 pr-2" *ngIf="applicationType == applicationTypes.Server">
+        <p>Edit settings:</p>
+        <button [disabled]="this.objectData.connectedResources.length == 0" pButton pRipple type="button"
+            icon="pi pi-pencil" class="p-button-rounded p-button-primary p-button-text"
+            (click)="showSettingsWindow=true"></button>
+    </div>
+    <div *ngIf="applicationType == applicationTypes.Web">
+        <div class="pt-3 pl-2 pr-2">
+            <p>RedirectUris:</p>
+            <p-tabView>
+                <p-tabPanel *ngFor="let env of envs" [header]="env">
+                    <p-chips separator="," formControlName="{{'redirectUris'+env}}"></p-chips>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </div>
+</form>
+
+<ng-container *ngIf="showSettingsWindow">
+    <p-dialog [closeOnEscape]="true" [modal]="true" header="Update settings" [(visible)]="showSettingsWindow"
+        [style]="{width: '80%',height:'80%' }" [baseZIndex]="10000">
+        <app-editsettings [nodeData]="this.objectData"></app-editsettings>
+    </p-dialog>
+</ng-container>

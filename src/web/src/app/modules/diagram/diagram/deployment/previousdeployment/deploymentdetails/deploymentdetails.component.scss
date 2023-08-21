@@ -1,0 +1,26 @@
+.success {
+    color: #689F38;
+}
+
+.info {
+    color: #2196F3
+}
+
+.failed {
+    color: #D32F2F;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+}
+
+.goto {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  cursor: pointer;
+}
+
+:host ::ng-deep .p-timeline-event-opposite {
+    flex: 0.2
+}

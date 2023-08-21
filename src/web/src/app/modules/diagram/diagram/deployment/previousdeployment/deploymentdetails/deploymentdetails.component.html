@@ -1,0 +1,82 @@
+<ng-container *ngIf="StatusMessages.length>0">
+    <div class="pb-1">
+        <p-timeline [value]="getDeploymentNotification(null)" [align]="'left'">
+            <ng-template pTemplate="marker" let-notification>
+                <span class="custom-marker shadow-2">
+                    <container-element [ngSwitch]="notification.status">
+                        <ng-container *ngSwitchCase="DeploymentStatus.DeploymentStarted">
+                            <i class="pi pi-info info"></i>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="DeploymentStatus.DeploymentFinished">
+                            <i class="pi pi-check success"></i>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="DeploymentStatus.DeploymentFailed">
+                            <i class="pi pi-exclamation-triangle failed"></i>
+                        </ng-container>
+                    </container-element>
+                </span>
+            </ng-template>
+            <ng-template pTemplate="content" let-notification>
+                <container-element [ngSwitch]="notification.status">
+                    <ng-container *ngSwitchCase="DeploymentStatus.DeploymentStarted">
+                        {{notification.message}}
+                    </ng-container>
+                    <ng-container *ngSwitchCase="DeploymentStatus.DeploymentFinished">
+                        <div class="info-row success">
+                            {{notification.message}}
+                        </div>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="DeploymentStatus.OperationFailed">
+                        <div class="failed">{{notification.message}}
+                        </div>
+                    </ng-container>
+                </container-element>
+            </ng-template>
+            <ng-template pTemplate="opposite" let-event>
+                {{event.date | date:'medium'}}
+            </ng-template>
+        </p-timeline> 
+    </div>
+    <p-tabView *ngIf="Tabs.length > 0">
+        <p-tabPanel *ngFor="let tab of Tabs" [header]="tab">
+            <p-timeline [value]="getDeploymentNotification(tab)" [align]="'left'">
+                <ng-template pTemplate="marker" let-notification>
+                    <span class="custom-marker shadow-2">
+                        <container-element [ngSwitch]="notification.status">
+                            <ng-container *ngSwitchCase="DeploymentStatus.OperationStarted">
+                                <i class="pi pi-info info"></i>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="DeploymentStatus.OperationSucceeded">
+                                <i class="pi pi-check success"></i>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="DeploymentStatus.OperationFailed">
+                                <i class="pi pi-exclamation-triangle failed"></i>
+                            </ng-container>
+                        </container-element>
+                    </span>
+                </ng-template>
+                <ng-template pTemplate="content" let-notification>
+                    <container-element [ngSwitch]="notification.status">
+                        <ng-container *ngSwitchCase="DeploymentStatus.OperationStarted">
+                            {{notification.message}}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="DeploymentStatus.OperationSucceeded">
+                            <div class="info-row success">
+                                {{notification.message}}
+                                <i class="pi pi-search goto" (click)="openLink(notification.url)"></i>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="DeploymentStatus.OperationFailed">
+                            <div  class="failed">{{notification.message}}
+                                <i class="pi pi-info info failed" pTooltip={{notification.error}}></i>
+                            </div> 
+                        </ng-container>
+                    </container-element>
+                </ng-template>
+                <ng-template pTemplate="opposite" let-event>
+                    {{event.date | date:'medium'}}
+                </ng-template>
+            </p-timeline>
+        </p-tabPanel>
+    </p-tabView>
+</ng-container>

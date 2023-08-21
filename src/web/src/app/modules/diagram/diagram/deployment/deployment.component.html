@@ -1,0 +1,47 @@
+<div style="height:100%;">
+    <p-tabView [style]="{'height': '100%'}" [(activeIndex)]="activeIndex">
+        <p-tabPanel header="Deployment" [style]="{'height': '100%'}">
+            <div *ngIf="!canDeploy">
+                <div *ngIf="!projectValid" class="p-error text-center">
+                    <p>Base information about deployment are not filled</p>
+                </div>
+                <div *ngIf="!deploymentObjectsValid" class="p-error text-center">
+                    <p>Diagram contains not valid objects</p>
+                </div>
+            </div>
+            <div style="height:100%" *ngIf="canDeploy" [formGroup]="deploymentForm">
+                <div style="height:20%;">
+                    <div class="p-inputgroup">
+                        <div class="pl-5">
+                            <p>Resource Deployment:</p>
+                            <p-selectButton formControlName="resourceDeployment" [options]="stateOptions"
+                                optionLabel="label" optionValue="value"></p-selectButton>
+                        </div>
+                        <div class="pl-5">
+                            <p>Application Identity Deployment:</p>
+                            <p-selectButton formControlName="applicationIdentityDeployment" [options]="stateOptions"
+                                optionLabel="label" optionValue="value"></p-selectButton>
+                        </div>
+                        <div class="pl-5">
+                            <p>Code Deployment:</p>
+                            <p-selectButton formControlName="codeDeployment" [options]="stateOptions"
+                                optionLabel="label" optionValue="value"></p-selectButton>
+                        </div>
+                        <div class="pl-8 pt-5">
+                            <button pButton pRipple type="button" label="Deploy"
+                                class="p-button-rounded p-button-success" (click)="deploy()"></button>
+                        </div>
+                    </div>
+                </div>
+                <div style="height:70%;">
+                    <div id="jsoneditor" style="height:100%;"></div>
+                </div>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="Previous Deployments">
+            <ng-template pTemplate="content">
+                <app-previousdeployment [ProjectId]="project.id"></app-previousdeployment>
+            </ng-template>
+        </p-tabPanel>
+    </p-tabView>
+</div>

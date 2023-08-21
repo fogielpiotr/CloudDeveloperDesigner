@@ -1,0 +1,21 @@
+.project-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-card {
+  min-width: 450px;
+  max-width: 450px;
+  min-height: 300px;
+  max-width: 300px;
+  flex: 1 1 auto;
+  margin: 20px;
+}
+
+.new-project-button {
+  margin: 10px;
+}
+
+.description {
+  overflow-wrap: break-word;
+}
